@@ -1,0 +1,18 @@
+<header class="msite-header">
+
+    <div>
+
+        <div class="msites-nav">   
+
+            <div class="nav-index">
+                <a class="nav-index-link" href="{{ site.baseurl }}">P</a>
+            </div>
+            
+                
+            {% for page in site.pages %}
+                <a href="{{ page.url }}">{{ page.title }}</a>
+            {% endfor %}
+            
+        </div>
+    </div>
+</header>

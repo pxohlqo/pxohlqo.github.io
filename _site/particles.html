@@ -1,0 +1,106 @@
+<div class="particles">
+
+</div>
+<style>
+    body {
+        background: #2d2d2d;
+        overflow: hidden;
+    }
+
+    .particles .particle {
+        border-radius: 100%;
+        position: absolute;
+
+        /*background: transparent;*/
+
+        background-size: 100%;
+        background-repeat: no-repeat;
+        /* color: #f2f2f2; */
+        background-color: aqua;
+        height: 20px;
+        width: 20px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var particles = $('.particles'),
+        d = document, $d = $(d),
+        w = window, $w = $(w),
+        wWidth = $w.width(), wHeight = $w.height(),
+        mouseX = wWidth / 2, mouseY = wHeight / 2;
+
+    $w.on('resize', function () {
+        wWidth = $w.width();
+        wHeight = $w.height();
+    });
+
+    $d.ready(function () {
+        console.info("d ready");
+        
+        $d
+            .on('mousemove', function (event) {
+                //console.info("mouse move");
+                event.preventDefault();
+                event.stopPropagation();
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+            })
+            .on('mousedown', function (event) {
+                //console.info("mouse down");
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+                var timer = setInterval(function () {
+                    $d
+                        .one('mouseup mouseleave', function () {
+                            clearInterval(timer);
+                        })
+                    createParticle(event);
+                }, 1000)
+            });
+    })
+
+
+    function createParticle(event) {
+        //console.info("create par");
+        var particle = $('<div class="particle"/>'),
+            speedHorz = Math.random() * 10,
+            speedUp = Math.random() * 25,
+            spinVal = 360 * Math.random(),
+            spinSpeed = ((36 * Math.random())) * (Math.random() <= 0.5 ? -1 : 1),
+            otime,
+            time = otime = (1 + (0.5 * Math.random())) * 1000,
+            top = mouseY - 5,
+            left = mouseX - 5,
+            direction = Math.random() <= 0.5 ? -1 : 1,
+            life = 10;
+
+        particle.css({
+            top: top + 'px',
+            left: left + 'px',
+            transform: 'rotate(' + spinVal + 'deg)',
+            webkitTransdorm: 'rotate(' + spinVal + 'deg)'
+        }).appendTo( particles );
+
+         var particleTimer = setInterval(function () {
+            time = time - life;
+            left = left - (speedHorz * direction);
+            top = top - speedUp;
+            speedUp = Math.min(10, speedUp - 1);
+            spinVal = spinVal + spinSpeed;
+
+            particle.css({
+                top: top + 'px',
+                left: left + 'px',
+                opacity: ((time / otime) / 2) + 0.25,
+                //opacity: 100,
+                transform: 'rotate(' + spinVal + 'deg)',
+                webkitTransdorm: 'rotate(' + spinVal + 'deg)'
+            });
+
+            if (time <= 0 || left <= -10 || left >= wWidth + 10 || top >= wHeight + 10) {
+                particle.remove();
+                clearInterval(particleTimer);
+            }
+        }, 1000); 
+    }
+</script>

@@ -1,0 +1,83 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="mparticles">
+
+</div>
+<style>
+    body {
+        background: #2d2d2d;
+        overflow: hidden;
+    }
+
+    .mparticles .particle {
+        background-color: aqua;
+        position: absolute;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        border-radius: 0%;
+
+        top: 20%;
+        left: 30%;
+
+        width: 10px;
+        height: 10px;
+    }
+
+
+</style>
+<script>
+    var d = document, $d = $(d),
+        w = window, $w = $(w),
+        mparticles = $('.mparticles'),
+        pSize = 10,
+        pLife = 100,
+        wWidth = $w.width(), wHeight = $w.height();
+
+    var pNo = 0; 
+
+    $d.ready(function () {
+        var aTimer = setInterval(function () {
+            emmittingParticle();
+        }, 1000 / 20);
+
+        $d.on('mousedown', function () {
+            clearInterval(aTimer);
+            console.info('anim stop');
+        })
+    })
+
+    function emmittingParticle () {
+        var particle = $('<div class="particle"/>'),
+            trans = 2,
+            top = 80,
+            left = 50,
+            ppSize = pSize + (Math.random() <= 0.5 ? -1 : 1) * (Math.random() * 6 * (pLife - lastLife) / pLife),
+            //lastLife = pLife + (Math.random() <= 0.5 ? -1 : 1) * (Math.random() * 5);
+            lastLife = pLife;
+
+        particle.css({
+            width: ppSize + 'px',
+            height: ppSize + 'px',
+            top: top + 'px',
+            left: left + 'px'
+
+        }).appendTo( mparticles );
+
+        var pTimer = setInterval(function () {
+            left = left + trans;
+            lastLife = lastLife - 1,
+            //top = top + ((Math.random() <= 0.5 ? -1 : 1) * (Math.random() * 10) * ((pLife - lastLife) / pLife));
+
+            particle.css({
+                left: left + 'px',
+                top: top + 'px',
+                opacity: 1 - ((pLife - lastLife) / pLife)
+            })
+
+            if (left <= 0 || left >= wWidth || lastLife <= 0 ) {
+                particle.remove();
+                clearInterval(pTimer);
+            }
+        }, 1000 / 30 );
+    }
+
+</script>
