@@ -78,7 +78,49 @@
     }
 }
 
+.homeBanner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: hidden;
+
+    .homeBanner-bg {
+        position: absolute;
+        
+    }
+
+    .homeBanner-parallex {
+        position: absolute;
+        left: 6%;
+    
+    }
+
+    .homeBanner-ft {
+        position: absolute;
+        
+    }
+    
+}
+
+.contentsTable {
+
+    background-color: red;
+    position: absolute;
+    width: 100%;
+    height: 600px;
+}
+
+.homeFooter {
+    background-color: blue;
+    width: 100%;
+    position: absolute;
+    top: 800px;
+}
+
 .site-mfooter {
+    
+    position: relative;
+    width: 100%;
     background-color: #272727;
     text-align: center;
     display: block;

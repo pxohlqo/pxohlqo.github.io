@@ -3,25 +3,84 @@ title: Welcome to pxohlqo!
 ---
 <!DOCTYPE html>
 <html>
-    {% include head.html %}
-    <head>
-        <title>Welcome!</title>
-    </head>
+{% include head.html %}
 
-    <body>
-            <header class="homeHeader">
-                <a class="headerUpcaseP" href="{{ site.baseurl }}">P</a>
-                <h1 class="headerTitle">PXOHLQO</h1>
-                <a class="headerAbout" href="/about.html">About</a>
-            </header>
+<body>
+    <header class="homeHeader">
+        <a class="headerUpcaseP" href="{{ site.baseurl }}">P</a>
+        <h1 class="headerTitle">PXOHLQO</h1>
+        <a class="headerAbout" href="/about.html">About</a>
+    </header>
 
-            <div>
 
-            </div>
+    <div class="homeBanner">
+        <img class="homeBanner-bg" src="assets/img/banner/bg.png">
+        <img class="homeBanner-parallex" src="assets/img/banner/parallex.png">
+        <img class="homeBanner-ft" src="assets/img/banner/ft.png">
+    </div>
 
-            {% include mfooter.html %}
-    </body>
+
+    <div class="contentsTable">
+
+    </div>
+
+    <div class="homeFooter">
+        {% include mfooter.html %}
+    </div>
+
+
+</body>
 
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
 
+        var bannerH = (1050 / 1920) * $(window).width(),
+            palLayerScale = $(window).width() / 1920,
+            palLayerW = 603 * palLayerScale,
+            palLayerH = 1883 * palLayerScale,
+            contentY = bannerH + $(".homeHeader").height();
 
+        setElePosition();
+
+        $(window).resize(function () {
+            setElePosition();
+        })
+
+        $(window).scroll(function () {
+            var scrollVal = $(document).scrollTop();
+
+            $(".homeBanner-parallex").css({
+                "top": -scrollVal + "px"
+            })
+        })
+
+        function setElePosition() {
+
+            bannerH = (1050 / 1920) * $(window).width();
+            palLayerScale = $(window).width() / 1920;
+            palLayerW = 603 * palLayerScale;
+            palLayerH = 1883 * palLayerScale;
+            contentY = bannerH + $(".homeHeader").height()
+
+            $(".homeBanner").css({
+                "height": bannerH + "px",
+            })
+
+            $(".homeBanner-parallex").css({
+                "width": palLayerW + "px",
+                "height": palLayerH + "px"
+            })
+
+            $(".contentsTable").css({
+                "top": contentY + "px"
+            })
+
+            $(".homeFooter").css({
+                "position": "absolute",
+                "top": contentY + $(".contentsTable").height() + "px"
+            })
+        }
+    });
+</script>

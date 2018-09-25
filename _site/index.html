@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
             Welcome to pxohlqo!
         
     </title>
-    <meta name="description" content="">
+    <meta name="description" content="我的个人主页！">
 
     <link rel="stylesheet" href="/css/main.css">
     <link rel="canonical" href="http://localhost:4000/">
@@ -18,22 +18,28 @@
     <!-- Add font. -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
 </head>
-    <head>
-        <title>Welcome!</title>
-    </head>
 
-    <body>
-            <header class="homeHeader">
-                <a class="headerUpcaseP" href="">P</a>
-                <h1 class="headerTitle">PXOHLQO</h1>
-                <a class="headerAbout" href="/about.html">About</a>
-            </header>
+<body>
+    <header class="homeHeader">
+        <a class="headerUpcaseP" href="">P</a>
+        <h1 class="headerTitle">PXOHLQO</h1>
+        <a class="headerAbout" href="/about.html">About</a>
+    </header>
 
-            <div>
 
-            </div>
+    <div class="homeBanner">
+        <img class="homeBanner-bg" src="assets/img/banner/bg.png">
+        <img class="homeBanner-parallex" src="assets/img/banner/parallex.png">
+        <img class="homeBanner-ft" src="assets/img/banner/ft.png">
+    </div>
 
-            <footer class="site-mfooter">
+
+    <div class="contentsTable">
+
+    </div>
+
+    <div class="homeFooter">
+        <footer class="site-mfooter">
     
     <div class="footer-divider">
     </div>
@@ -56,8 +62,61 @@
         <a class="contact-github" href="https://github.com/pxohlqo" target="_blank">pxohlqo</a>
     </div>
 </footer>
-    </body>
+    </div>
+
+
+</body>
 
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
 
+        var bannerH = (1050 / 1920) * $(window).width(),
+            palLayerScale = $(window).width() / 1920,
+            palLayerW = 603 * palLayerScale,
+            palLayerH = 1883 * palLayerScale,
+            contentY = bannerH + $(".homeHeader").height();
 
+        setElePosition();
+
+        $(window).resize(function () {
+            setElePosition();
+        })
+
+        $(window).scroll(function () {
+            var scrollVal = $(document).scrollTop();
+
+            $(".homeBanner-parallex").css({
+                "top": -scrollVal + "px"
+            })
+        })
+
+        function setElePosition() {
+
+            bannerH = (1050 / 1920) * $(window).width();
+            palLayerScale = $(window).width() / 1920;
+            palLayerW = 603 * palLayerScale;
+            palLayerH = 1883 * palLayerScale;
+            contentY = bannerH + $(".homeHeader").height()
+
+            $(".homeBanner").css({
+                "height": bannerH + "px",
+            })
+
+            $(".homeBanner-parallex").css({
+                "width": palLayerW + "px",
+                "height": palLayerH + "px"
+            })
+
+            $(".contentsTable").css({
+                "top": contentY + "px"
+            })
+
+            $(".homeFooter").css({
+                "position": "absolute",
+                "top": contentY + $(".contentsTable").height() + "px"
+            })
+        }
+    });
+</script>
