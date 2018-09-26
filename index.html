@@ -5,11 +5,11 @@ title: Welcome to pxohlqo!
 <html>
 {% include head.html %}
 
-<body>
+<body style="background-color:#131617">
     <header class="homeHeader">
         <a class="headerUpcaseP" href="{{ site.baseurl }}">P</a>
         <h1 class="headerTitle">PXOHLQO</h1>
-        <a class="headerAbout" href="/about.html">About</a>
+        <a class="headerAbout" href="#">About</a>
     </header>
 
 
@@ -19,9 +19,35 @@ title: Welcome to pxohlqo!
         <img class="homeBanner-ft" src="assets/img/banner/ft.png">
     </div>
 
+    <div class="bannerText">
+        <h1 class="bannerT aa">Hi!</h1>
+        <h1 class="bannerT ab">I`m Cracky Axe</h1>
+        <h1 class="bannerT ac">---All encounters are long-lasting reunion.</h1>
+    </div>
+
 
     <div class="contentsTable">
-
+        <div class="contents" id="blog">
+            <h1 class="contentsBlogs-title">Blogs:</h1>
+            <svg class="contentBlogs-bg" width="300" height="500">
+                <rect x="0" y="0" rx="20" ry="20" width="300" height="500"
+                style="fill: white;"/>
+            </svg>
+        </div>
+        <div class="contents" id="code">
+            <h1 class="contentsCode-title">Code:</h1>
+            <svg class="contentCode-bg" width="300" height="500">
+                <rect x="0" y="0" rx="20" ry="20" width="300" height="500"
+                style="fill: white;"/>
+            </svg>
+        </div>
+        <div class="contents" id="design">
+            <h1 class="contentsDesign-title">Design:</h1>
+            <svg class="contentDesign-bg" width="300" height="500">
+                <rect x="0" y="0" rx="20" ry="20" width="300" height="500"
+                style="fill: white;"/>
+            </svg>
+        </div>
     </div>
 
     <div class="homeFooter">
@@ -36,8 +62,8 @@ title: Welcome to pxohlqo!
 <script>
     $(document).ready(function () {
 
-        var bannerH = (1050 / 1920) * $(window).width(),
-            palLayerScale = $(window).width() / 1920,
+        var bannerH = (1050 / 1920) * $(window).width() * 0.8,
+            palLayerScale = $(window).width() / 1920 * 0.8,
             palLayerW = 603 * palLayerScale,
             palLayerH = 1883 * palLayerScale,
             contentY = bannerH + $(".homeHeader").height();
@@ -58,8 +84,8 @@ title: Welcome to pxohlqo!
 
         function setElePosition() {
 
-            bannerH = (1050 / 1920) * $(window).width();
-            palLayerScale = $(window).width() / 1920;
+            bannerH = (1050 / 1920) * $(window).width() * 0.8;
+            palLayerScale = $(window).width() / 1920 * 0.8;
             palLayerW = 603 * palLayerScale;
             palLayerH = 1883 * palLayerScale;
             contentY = bannerH + $(".homeHeader").height()
@@ -74,13 +100,35 @@ title: Welcome to pxohlqo!
             })
 
             $(".contentsTable").css({
-                "top": contentY + "px"
+                "top": contentY + 80 + "px"
             })
 
+            var contentsBgW = $(window).width() * 0.24,
+                contentsXoffset = $(window).width() * 0.06;
+            $(".contents").children("svg").width(contentsBgW);
+            $(".contents").children("svg").children("rect").width(contentsBgW);
+
+            $(".contentsBlogs-title").css({
+                left: - $(".contentsBlogs-title").width() - 15 + "px"
+            })
+            $(".contentsCode-title").css({
+                left: - $(".contentsCode-title").width() - 15 + "px"
+            })
+            $(".contentsDesign-title").css({
+                left: - $(".contentsDesign-title").width() - 15 + "px"
+            })
+            var contentWholeW = contentsBgW * 3 + $(".contentsBlogs-title").width() + $(".contentsCode-title").width() + $(".contentsDesign-title").width();
+            var contentBlogLeft = (($(window).width() - contentWholeW ) / 2 + $(".contentsBlogs-title").width()) * 1;
+            
+            $("#blog").css({left: contentBlogLeft + contentsXoffset * 0 + "px"})
+            $("#code").css({left: contentBlogLeft + contentsXoffset * 1 + "px"});
+            $("#design").css({left: contentBlogLeft + contentsXoffset * 2 + "px"});
+            
             $(".homeFooter").css({
                 "position": "absolute",
                 "top": contentY + $(".contentsTable").height() + "px"
             })
         }
+
     });
 </script>
