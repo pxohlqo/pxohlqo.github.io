@@ -33,6 +33,15 @@ title: Welcome to pxohlqo!
                 <rect x="0" y="0" rx="20" ry="20" width="300" height="500"
                 style="fill: white;"/>
             </svg>
+
+            <div style="position:absolute;top:60px">
+
+                {% for post in site.categories.blog %}
+                <a class="contents-post-title" href="{{ post.url }}">{{ post.title }}</a>
+                <div style="position: relative;height: 1px;background-color: #cccccc;width: 80%;margin-left: 12px "></div>
+                {% endfor %}
+
+            </div>
         </div>
         <div class="contents" id="code">
             <h1 class="contentsCode-title">Code:</h1>
@@ -40,6 +49,15 @@ title: Welcome to pxohlqo!
                 <rect x="0" y="0" rx="20" ry="20" width="300" height="500"
                 style="fill: white;"/>
             </svg>
+
+            <div style="position:absolute;top:60px">
+
+                {% for post in site.categories.code %}
+                <a class="contents-post-title" href="{{ post.url }}">{{ post.title }}</a>
+                <div style="position: relative;height: 1px;background-color: #cccccc;width: 80%;margin-left: 12px "></div>
+                {% endfor %}
+
+            </div>
         </div>
         <div class="contents" id="design">
             <h1 class="contentsDesign-title">Design:</h1>
@@ -47,11 +65,20 @@ title: Welcome to pxohlqo!
                 <rect x="0" y="0" rx="20" ry="20" width="300" height="500"
                 style="fill: white;"/>
             </svg>
+
+            <div style="position:absolute;top:60px">
+
+                {% for post in site.categories.design %}
+                <a class="contents-post-title" href="{{ post.url }}">{{ post.title }}</a>
+                <div style="position: relative;height: 1px;background-color: #cccccc;width: 80%;margin-left: 12px "></div>
+                {% endfor %}
+
+            </div>
         </div>
     </div>
 
-    <div class="homeFooter">
-        {% include mfooter.html %}
+    <div class="homeFooterDiv">
+        {% include home-footer.html %}
     </div>
 
 
@@ -124,9 +151,13 @@ title: Welcome to pxohlqo!
             $("#code").css({left: contentBlogLeft + contentsXoffset * 1 + "px"});
             $("#design").css({left: contentBlogLeft + contentsXoffset * 2 + "px"});
             
-            $(".homeFooter").css({
+            $(".homeFooterDiv").css({
                 "position": "absolute",
                 "top": contentY + $(".contentsTable").height() + "px"
+            })
+
+            $(".contents-post-title").css({
+                width: (contentsBgW - 20) + "px"
             })
         }
 

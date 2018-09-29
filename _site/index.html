@@ -47,6 +47,18 @@
                 <rect x="0" y="0" rx="20" ry="20" width="300" height="500"
                 style="fill: white;"/>
             </svg>
+
+            <div style="position:absolute;top:60px">
+
+                
+                <a class="contents-post-title" href="/blog/2018/09/29/Large-article-test.html">Large article</a>
+                <div style="position: relative;height: 1px;background-color: #cccccc;width: 80%;margin-left: 12px "></div>
+                
+                <a class="contents-post-title" href="/blog/2018/09/20/Hello-Jekyll.html">Hello Jekyll_11111111111111</a>
+                <div style="position: relative;height: 1px;background-color: #cccccc;width: 80%;margin-left: 12px "></div>
+                
+
+            </div>
         </div>
         <div class="contents" id="code">
             <h1 class="contentsCode-title">Code:</h1>
@@ -54,6 +66,15 @@
                 <rect x="0" y="0" rx="20" ry="20" width="300" height="500"
                 style="fill: white;"/>
             </svg>
+
+            <div style="position:absolute;top:60px">
+
+                
+                <a class="contents-post-title" href="/code/2018/09/29/Hello-Jekyll-2.html">Hello Jekyll 2</a>
+                <div style="position: relative;height: 1px;background-color: #cccccc;width: 80%;margin-left: 12px "></div>
+                
+
+            </div>
         </div>
         <div class="contents" id="design">
             <h1 class="contentsDesign-title">Design:</h1>
@@ -61,11 +82,17 @@
                 <rect x="0" y="0" rx="20" ry="20" width="300" height="500"
                 style="fill: white;"/>
             </svg>
+
+            <div style="position:absolute;top:60px">
+
+                
+
+            </div>
         </div>
     </div>
 
-    <div class="homeFooter">
-        <footer class="site-mfooter">
+    <div class="homeFooterDiv">
+        <footer class="home-footer">
 
     <div class="footer-divider">
     </div>
@@ -89,8 +116,8 @@
     </div>
 
     <div>
-        <svg version="1.1" class="email-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60px" height="60px" x="0px"
-            y="0px" viewBox="0 0 31.012 31.012" xml:space="preserve">
+        <svg version="1.1" class="email-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="60px" height="60px" x="0px" y="0px" viewBox="0 0 31.012 31.012" xml:space="preserve">
             <defs>
                 <style>
                     .mail-path {
@@ -184,9 +211,13 @@
             $("#code").css({left: contentBlogLeft + contentsXoffset * 1 + "px"});
             $("#design").css({left: contentBlogLeft + contentsXoffset * 2 + "px"});
             
-            $(".homeFooter").css({
+            $(".homeFooterDiv").css({
                 "position": "absolute",
                 "top": contentY + $(".contentsTable").height() + "px"
+            })
+
+            $(".contents-post-title").css({
+                width: (contentsBgW - 20) + "px"
             })
         }
 
