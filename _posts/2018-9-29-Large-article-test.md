@@ -1,5 +1,5 @@
 ---
-layout: base-post
+layout: post-cn
 title: "Large article"
 categories: [blog]
 ---
