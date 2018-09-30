@@ -7,7 +7,15 @@
         {% include post-header.html %}
 
         <div class="post-content">
-                {{ content }}
+            <iframe name="content-frame">
+                
+                    {{ content }}
+            </iframe>
+            <script>
+                var cssLink = document.createElement('link');
+                cssLink.href=""
+            </script>
+                
         </div>
 
         {% include post-footer.html %}

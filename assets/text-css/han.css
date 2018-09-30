@@ -152,10 +152,11 @@ h1, h2, h3, h4, h5, h6 {
   /*font-family: "PingFang SC", "Lantinghei SC", "Microsoft Yahei", "Hiragino Sans GB", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans;*/
   -webkit-font-smoothing: initial;
   font-weight: 100;
-  color: var(--text-color);
+  /* color: var(--text-color); */
   line-height: 1.35; 
   font-variant-numeric: lining-nums;
   margin-bottom: 1em;
+  
   color: white;
 }
 
