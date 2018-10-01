@@ -1,4 +1,139 @@
 ---
-layout: aboutL
 title: about
 ---
+<!DOCTYPE <!DOCTYPE html>
+<html>
+{% include head.html %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<body style="background-color:#0b0f1f">
+    {% include post-header.html %}
+
+    <script>
+        $(".headerAbout").css({
+            opacity: 0
+        });
+    </script>
+
+    <div class="about-content">
+        <p id="aa">Nice to meet you!</p>
+        <p id="ab">I'm Cracky Axe, an undergraduate student from Tianjin Univercity.Learned coding and designing both
+            by self-study.Willing to build braw things, for example tasty food, fair-sounding music, beautiful vision,
+            humane apps, maybe more in future.</p>
+    </div>
+
+    <div class="about-particles"></div>
+    <div class="about-particles-matte" style="border-radius: 12%;z-index: 4;background: #FFE046;width: 40px;height: 40px;position: absolute;transform: rotate(45deg)"></div>
+
+    {% include post-footer.html %}
+
+</body>
+
+</html>
+
+<script>
+    var $w = $(window), $d = $(document), particlesDiv = $('.about-particles'),
+        wWidth = $w.width(), wHeight = $w.height(),
+        colorPool = ['#FFE046', '#F9C73F', '#FF4E41', ' #DA3330', '#A23D3D'];
+
+    $d.ready(function () {
+
+        locatParticlesMatte();
+        $w.resize(function () {
+            wWidth = $w.width();
+            wHeight = $w.height();
+            locatParticlesMatte();
+        });
+
+        var particlesAnimater = setInterval(function () {
+            emmitParticle();
+        }, 1000 / 4);
+
+        $d.on('mousedown', function () {
+            //clearInterval(particlesAnimater);
+            particlesAnimater = null;
+        });
+
+        function emmitParticle() {
+            var particle = $('<div class="particle"/>'),
+                size = 40 + (randomPN() * Math.random() * 10 * 0),
+                color = colorPool[0],
+                moveSpeed = 10,
+                maxLife = 100 + (randomPN() * Math.random() * 30),
+                age = 0,
+                oldPercent = 0,
+                left = 0.12 * wWidth + (randomPN() * Math.random() * 10 * 0) + size / 2,
+                top = 0.7 * wHeight + (randomPN() * Math.random() * 10 * 0),
+                direction = randomPN(),
+                changeDirectionTime = generateChangeKeyFrames(maxLife);
+
+            particle.css({
+                width: size + 'px',
+                height: size + 'px',
+                left: left + 'px',
+                top: top + 'px',
+                "margin-left": - size / 2 + "px",
+                transform: "rotate(45deg)",
+                background: color
+            }).appendTo(particlesDiv);
+
+            var particleTimer = setInterval(function () {
+                age = age + 1;
+                oldPercent = 1 - ((maxLife - age) / (maxLife)); // go large
+                size = size - (size * 0.5 * oldPercent * oldPercent);
+                left = left + (direction * Math.random() * 0.8 * (1 - oldPercent));
+                top = top - (2 * Math.random() * (1 - oldPercent));
+                var colorIndex = Math.floor(age / (maxLife / 5));
+                color = colorPool[colorIndex];
+
+
+                if (age == changeDirectionTime[0]) { // check if current lastlife equal to the biggest one of keyframes 
+                    direction = - direction;
+
+                    changeDirectionTime = changeDirectionTime.slice(1, changeDirectionTime.length);
+
+                } else if (age < changeDirectionTime[0]) {
+                    changeDirectionTime = changeDirectionTime.slice(1, changeDirectionTime.length);
+                }
+
+                particle.css({
+                    width: size + "px",
+                    height: size + "px",
+                    left: left + 'px',
+                    top: top + 'px',
+                    "margin-left": - size / 2 + "px",
+                    background: color
+                })
+
+                if (age > maxLife) {
+                    clearInterval(particleTimer);
+                    particle.remove();
+                }
+            }, 1000 / 60);
+        }
+
+    });
+
+    function randomPN() {
+        return (Math.random() <= 0.5 ? -1 : 1);
+    }
+
+    function generateChangeKeyFrames(maxLife) {
+        var duration = maxLife, ary = new Array();
+        var keyNo = Math.random() * (4 - 1) + 1;
+        for (var i = 0; i < keyNo; i++) {
+            var temp = Math.floor(Math.random() * 100);
+            ary.push(temp);
+        }
+        ary.sort(function (a, b) { return a - b });  // sort keyframe indexes from 100 -> 0 in order to fit life
+        return ary;
+    }
+
+    function locatParticlesMatte() {
+        $(".about-particles-matte").css({
+            left: 0.12 * wWidth + "px",
+            top: 0.7 * wHeight + "px"
+        })
+    }
+
+</script>
