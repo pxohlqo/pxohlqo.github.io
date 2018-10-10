@@ -24,7 +24,7 @@ permalink: /about/
     </div>
 
     <div class="about-particles"></div>
-    <div class="about-particles-matte" style="border-radius: 12%;z-index: 4;background: #FFE046;width: 40px;height: 40px;position: absolute;transform: rotate(45deg)"></div>
+    <div class="about-particles-matte" style="border-radius: 12%;z-index: 4;background: #FFE046;width: 48px;height: 48px;position: absolute;transform: rotate(45deg)"></div>
 
     {% include post-footer.html %}
 
@@ -52,10 +52,11 @@ permalink: /about/
 
         $d.on('mousedown', function () {
             //clearInterval(particlesAnimater);
-            particlesAnimater = null;
+            //particlesAnimater = null;
         });
 
         function emmitParticle() {
+            
             var particle = $('<div class="particle"/>'),
                 size = 40 + (randomPN() * Math.random() * 10 * 0),
                 color = colorPool[0],
@@ -63,10 +64,10 @@ permalink: /about/
                 maxLife = 100 + (randomPN() * Math.random() * 30),
                 age = 0,
                 oldPercent = 0,
-                left = 0.12 * wWidth + (randomPN() * Math.random() * 10 * 0) + size / 2,
-                top = 0.7 * wHeight + (randomPN() * Math.random() * 10 * 0),
-                direction = randomPN(),
-                changeDirectionTime = generateChangeKeyFrames(maxLife);
+                left = 0.12 * wWidth + (randomPN() * Math.random() * 7 * 0) + size / 2,
+                top = 0.71 * wHeight + (randomPN() * Math.random() * 2 * 0),
+                emmitDelay = Math.random() * 1000 / 4 / 20,
+                upValue = 1 + (randomPN() * Math.random() * 0.3);
 
             particle.css({
                 width: size + 'px',
@@ -82,20 +83,14 @@ permalink: /about/
                 age = age + 1;
                 oldPercent = 1 - ((maxLife - age) / (maxLife)); // go large
                 size = size - (size * 0.5 * oldPercent * oldPercent);
-                left = left + (direction * Math.random() * 0.8 * (1 - oldPercent));
-                top = top - (2 * Math.random() * (1 - oldPercent));
+
+                if (age <= emmitDelay) {
+                    top = top;
+                } else {
+                    top = top - (upValue * (1 - oldPercent));
+                }
                 var colorIndex = Math.floor(age / (maxLife / 5));
                 color = colorPool[colorIndex];
-
-
-                if (age == changeDirectionTime[0]) { // check if current lastlife equal to the biggest one of keyframes 
-                    direction = - direction;
-
-                    changeDirectionTime = changeDirectionTime.slice(1, changeDirectionTime.length);
-
-                } else if (age < changeDirectionTime[0]) {
-                    changeDirectionTime = changeDirectionTime.slice(1, changeDirectionTime.length);
-                }
 
                 particle.css({
                     width: size + "px",
@@ -132,8 +127,8 @@ permalink: /about/
 
     function locatParticlesMatte() {
         $(".about-particles-matte").css({
-            left: 0.12 * wWidth + "px",
-            top: 0.7 * wHeight + "px"
+            left: (0.12 * wWidth - 4) + "px",
+            top: (0.7 * wHeight + 9) + "px"
         })
     }
 

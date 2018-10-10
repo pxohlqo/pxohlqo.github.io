@@ -228,7 +228,7 @@
         font-weight: normal;
         color: #d3d3d3;
 
-        display: inline-block;
+        display: block;
         position: relative;
         left: -30%;
         top: 24px;
@@ -236,45 +236,83 @@
         cursor: default;
     }
 
-    .github-logo {
+    .github-div {
+        display: inline-block;
         position: relative;
-        width: 60px;
-        height: 60px;
-        left: -60px;
-        right: 80%;
-        margin-top: 18px;
-        margin-right: 0;
+        padding-left: 70px;
+        padding-right: -20px;
+        margin-right: -20px;
+
+        .github-logo {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            left: -60px;
+            right: 80%;
+            margin-top: 18px;
+            margin-right: 0;
+        }
+    
+        .contact-github {
+            font-family: Roboto, sans-serif;
+            font-weight: normal;
+            font-size: 20px;
+            color: #d3d3d3;
+    
+            position: relative;
+            height: 60px;
+            left: -40px;
+            top: -22px;
+            z-index: 0;
+        }
     }
 
-    .contact-github {
-        font-family: Roboto, sans-serif;
-        font-weight: normal;
-        font-size: 20px;
-        color: #d3d3d3;
-
+   .email-div {
+        display: inline-block;
         position: relative;
-        height: 60px;
-        left: -40px;
-        top: -22px;
-        z-index: 0;
-    }
+        padding-right: 24px;
 
-    .email-logo {
+        .email-logo {
+            position: relative;
+            left: 6px;
+        }
+
+        .contact-email {
+            font-family: Roboto, sans-serif;
+            font-weight: normal;
+            font-size: 20px;
+            color: #d3d3d3;
+
+            position: relative;
+            height: 60px;
+            left: 24px;
+            top: -22px;
+        }
+   }
+   
+   .behance-div {
+        display: inline-block;
         position: relative;
-        left: 6px;
-    }
+        padding-left: 20px;
+        padding-right: 20px;
 
-    .contact-email {
-        font-family: Roboto, sans-serif;
-        font-weight: normal;
-        font-size: 20px;
-        color: #d3d3d3;
+        .behance-logo {
+            position: relative;
+            left: 2px;
+        }
 
-        position: relative;
-        height: 60px;
-        left: 24px;
-        top: -22px;
-    }
+        .contact-behance {
+            font-family: Roboto, sans-serif;
+            font-weight: normal;
+            font-size: 20px;
+            color: #d3d3d3;
+
+            position: relative;
+            height: 60px;
+            left: 18px;
+            top: -22px;
+        }
+   }    
 }
 
 .post-header {
@@ -1500,7 +1538,7 @@
         font-weight: normal;
         color: #d3d3d3;
 
-        display: inline-block;
+        display: block;
         position: relative;
         left: -30%;
         top: 24px;
@@ -1508,45 +1546,83 @@
         cursor: default;
     }
 
-    .github-logo {
+    .github-div {
+        display: inline-block;
         position: relative;
-        width: 60px;
-        height: 60px;
-        left: -60px;
-        right: 80%;
-        margin-top: 18px;
-        margin-right: 0;
+        padding-left: 70px;
+        padding-right: -20px;
+        margin-right: -20px;
+
+        .github-logo {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            left: -60px;
+            right: 80%;
+            margin-top: 18px;
+            margin-right: 0;
+        }
+    
+        .contact-github {
+            font-family: Roboto, sans-serif;
+            font-weight: normal;
+            font-size: 20px;
+            color: #d3d3d3;
+    
+            position: relative;
+            height: 60px;
+            left: -40px;
+            top: -22px;
+            z-index: 0;
+        }
     }
 
-    .contact-github {
-        font-family: Roboto, sans-serif;
-        font-weight: normal;
-        font-size: 20px;
-        color: #d3d3d3;
-
+   .email-div {
+        display: inline-block;
         position: relative;
-        height: 60px;
-        left: -40px;
-        top: -22px;
-        z-index: 0;
-    }
+        padding-right: 24px;
 
-    .email-logo {
+        .email-logo {
+            position: relative;
+            left: 6px;
+        }
+
+        .contact-email {
+            font-family: Roboto, sans-serif;
+            font-weight: normal;
+            font-size: 20px;
+            color: #d3d3d3;
+
+            position: relative;
+            height: 60px;
+            left: 24px;
+            top: -22px;
+        }
+   }
+   
+   .behance-div {
+        display: inline-block;
         position: relative;
-        left: 6px;
-    }
+        padding-left: 20px;
+        padding-right: 20px;
 
-    .contact-email {
-        font-family: Roboto, sans-serif;
-        font-weight: normal;
-        font-size: 20px;
-        color: #d3d3d3;
+        .behance-logo {
+            position: relative;
+            left: 2px;
+        }
 
-        position: relative;
-        height: 60px;
-        left: 24px;
-        top: -22px;
-    }
+        .contact-behance {
+            font-family: Roboto, sans-serif;
+            font-weight: normal;
+            font-size: 20px;
+            color: #d3d3d3;
+
+            position: relative;
+            height: 60px;
+            left: 18px;
+            top: -22px;
+        }
+   }    
 }
 
 .about-content {

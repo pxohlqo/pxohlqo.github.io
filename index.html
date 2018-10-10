@@ -143,13 +143,13 @@ title: Welcome to pxohlqo!
             $(".contents").children("svg").children("rect").width(contentsBgW);
 
             $(".contentsBlogs-title").css({
-                left: - $(".contentsBlogs-title").width() - 15 + "px"
+                left: - $(window).width() * 0.05 + "px"
             })
             $(".contentsCode-title").css({
-                left: - $(".contentsCode-title").width() - 15 + "px"
+                left: - $(window).width() * 0.05 + "px"
             })
             $(".contentsDesign-title").css({
-                left: - $(".contentsDesign-title").width() - 15 + "px"
+                left: - $(window).width() * 0.05 + "px"
             })
             var contentWholeW = contentsBgW * 3 + $(".contentsBlogs-title").width() + $(".contentsCode-title").width() + $(".contentsDesign-title").width();
             var contentBlogLeft = (($(window).width() - contentWholeW ) / 2 + $(".contentsBlogs-title").width()) * 1;
